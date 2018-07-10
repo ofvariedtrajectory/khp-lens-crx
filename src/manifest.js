@@ -3,7 +3,7 @@
  */
 module.exports = {
   name: 'khp-lens-crx',
-  description: 'A Chrome extension project with Vue.js',
+  description: 'Chrome Extension to increase visibility for KHP web game',
   author: 'ofvariedtrajectory<notanemail@gmail.com>',
   version: '1.0.0',
   icons: {
@@ -23,6 +23,7 @@ module.exports = {
     'storage',
     "webNavigation"
   ],
+  incognito: 'spanning',
   browser_action: {
     default_title: 'title',
     default_popup: 'pages/popup.html'

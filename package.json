@@ -1,7 +1,7 @@
 {
   "name": "khp-lens-crx",
   "version": "1.0.0",
-  "description": "A Chrome extension project with Vue.js",
+  "description": "Chrome Extension to increase visibility for KHP web game",
   "author": "ofvariedtrajectory<notanemail@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -41,7 +41,7 @@
     "file-loader": "^1.1.8",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.9.1",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "pug": "^2.0.0-rc.4",
     "pug-loader": "^2.3.0",
