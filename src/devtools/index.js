@@ -22,7 +22,7 @@ Lens.constants = {
       name: 'gem10'
     },
     10: {
-      name: 'premticket1'
+      name: 'premiumticket1'
     }
   }
 }
