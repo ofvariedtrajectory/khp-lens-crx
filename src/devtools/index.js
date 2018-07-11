@@ -21,7 +21,11 @@ Lens.constants = {
     9: {
       name: 'gem10'
     },
+    /* 10 is gem1free */
     10: {
+      name: 'gem1'
+    },
+    11: {
       name: 'premiumticket1'
     }
   }
