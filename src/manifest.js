@@ -5,7 +5,7 @@ module.exports = {
   name: 'khp-lens-crx',
   description: 'Chrome Extension to increase visibility for KHP web game',
   author: 'ofvariedtrajectory<notanemail@gmail.com>',
-  version: '1.0.1',
+  version: '1.1.0',
   icons: {
     '16': 'icons/16.png',
     '128': 'icons/128.png'

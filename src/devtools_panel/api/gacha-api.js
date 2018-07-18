@@ -1,6 +1,7 @@
 import Vue from 'vue'
 
-const KHP_DEVICE_LENS_API_PREFIX = 'https://khp-device-lens.net/v1'
+const KHP_DEVICE_LENS_HOSTNAME = 'https://khp-device-lens.net'
+const KHP_DEVICE_LENS_API_PREFIX = KHP_DEVICE_LENS_HOSTNAME + '/v1'
 
 export default {
   // /v1/{kh_id}/gacha/{type}

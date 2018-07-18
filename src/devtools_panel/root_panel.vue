@@ -11,7 +11,6 @@
           :row-class-name="tableRowClassName">
           <el-table-column type="index" width="50"></el-table-column>
           <el-table-column prop="obtained_info.length" label="Rolls"></el-table-column>
-          <el-table-column prop="kh_name" label="Account Name"></el-table-column>
           <el-table-column prop="kh_id" label="Account ID"></el-table-column>
           <el-table-column prop="header_date" label="Timestamp"></el-table-column>
         </el-table>

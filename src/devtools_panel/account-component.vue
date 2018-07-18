@@ -1,20 +1,18 @@
 <template>
     <el-row>
       <el-col :span="10" :push="14">
+        <!--
         <div class="grid-content bg-purple align-right">
-          <div class="account-description" v-if="account.kh_name">
-            You are currently using the <span class="bold" v-bind:title="account.kh_id">{{account.kh_name}} ({{account.kh_id}})</span> account.<br />
-            Click Login if this is not the correct account.
+          <div class="account-description" v-if="account.kh_id">
+            You are currently using the <span class="bold" v-bind:title="account.kh_id">({{account.kh_id}})</span> account.<br />
           </div>
-          <button type="button" class="el-button el-button--primary" @click="login">
-            <span>Login</span>
-          </button>
         </div>
+      -->
       </el-col>
     </el-row>
 </template>
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     data: () => ({
@@ -26,9 +24,7 @@
       })
     },
     methods: {
-      ...mapActions([
-        'login'
-      ])
+      //
     },
     components: {
       //

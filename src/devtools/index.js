@@ -36,46 +36,46 @@ Lens.init = function () {
   Lens.initPanel()
 }
 
+/**
+ * Only need to use devtools to record POST gacha JSON requests
+ */
+Lens.checkRequestRelevancy = function (req) {
+  const checkMimeType = req.response.content.mimeType === Lens.constants.mimeType
+  const checkRequestMethod = req.request.method.toUpperCase() === 'POST'
+  return checkMimeType && checkRequestMethod
+}
+
 Lens.initRequestListener = async function () {
   chrome.devtools.network.getHAR(function (result) {
     chrome.devtools.network.onRequestFinished.addListener(function (req) {
-      if (req.response.content.mimeType === Lens.constants.mimeType) {
+      if (Lens.checkRequestRelevancy(req)) {
         req.getContent(function (content) {
+          console.log('req', req)
           const parsed = JSON.parse(content)
-          const url = req.request.url
 
           if (parsed.gacha_id) {
             for (let i = 0; i < req.response.headers.length; i++) {
               const header = req.response.headers[i]
               if (header.name === 'date') {
                 parsed.header_date = header.value
+              } else if (header.name === 'kh-player-id') {
+                parsed.kh_id = header.value
+              }
+
+              if (Lens.allHeadersFound(parsed)) {
                 break
               }
             }
             Lens.gachaPulled(parsed)
-          } else if (parsed.data &&
-              parsed.data.length &&
-              url.indexOf(Lens.constants.urlPatterns.selectableBaseFilter) === -1 &&
-              url.indexOf(Lens.constants.urlPatterns.enhanceMaterials) === -1) {
-            // console.log(req)
-            if (parsed.data[0].a_weapon_id) {
-              // https://cf.r.kamihimeproject.dmmgames.com/v1/a_weapons/?json=%7B%22page%22%3A1%2C%22per_page%22%3A18%7D
-              console.log('You have', parsed.max_record_count, 'weapons.')
-              Lens.updateWeapons(parsed.data)
-            } else if (parsed.data[0].a_character_id) {
-              console.log('You have', parsed.max_record_count, 'kamihime.')
-              Lens.updateKamihime(parsed.data)
-            } else if (parsed.data[0].a_summon_id) {
-              console.log('You have', parsed.max_record_count, 'eidolon.')
-              Lens.updateEidolon(parsed.data)
-            }
-
-            console.log(parsed.data)
           }
         })
       }
     })
   })
+}
+
+Lens.allHeadersFound = function (parsed) {
+  return parsed.header_date !== undefined && parsed.kh_id !== undefined
 }
 
 Lens.initPanel = function () {
